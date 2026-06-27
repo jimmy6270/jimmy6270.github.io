@@ -62,4 +62,53 @@ Assert-Match $about 'AI \u7F16\u7A0B' 'About focus'
 Assert-NoMatch $about '\u9EC4\u7384|Hux|Meta|React Team|Facebook' 'About upstream biography'
 Assert-Match $index '\u63A2\u7D22 AI \u7F16\u7A0B\u4E0E\u5E94\u7528\uFF0C\u5206\u4EAB\u5B9E\u8DF5\u3001\u5DE5\u5177\u4E0E\u601D\u8003\u3002' 'Homepage description'
 
+$publicFiles = @(
+    '_config.yml',
+    'CNAME',
+    'index.html',
+    'about.html',
+    '_includes/about/zh.md',
+    '_includes/footer.html',
+    '_includes/head.html',
+    '_layouts/default.html',
+    '_layouts/keynote.html',
+    '_layouts/page.html',
+    '_layouts/post.html',
+    'pwa/manifest.json',
+    'sw.js',
+    'Rakefile',
+    'package.json',
+    'package-lock.json'
+)
+$publicText = ($publicFiles | ForEach-Object {
+    Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $Root $_)
+}) -join "`n"
+
+Assert-NoMatch $publicText '\u9EC4\u7384|\u5ED6\u5251\u660E|huangxuan\.me|huxpro@gmail\.com|UA-49627206-1|user=huxpro|avatar-hux|icon_wechat|ca-pub-6487568398225121|include ads\.html' 'Public identity residue'
+Assert-NoMatch (Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $Root 'sw.js')) '"yanshuo\.io"' 'Service worker upstream host'
+Assert-Match (Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $Root 'Rakefile')) 'post\.puts "author: \\"Jimmy\\""' 'Rake post author'
+Assert-Match (Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $Root 'Rakefile')) 'post\.puts "header-img: \\"img/home-bg\.jpg\\""' 'Rake post header image'
+Assert-Match (Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $Root 'package.json')) '"name": "jimmy-blog"' 'Package name'
+Assert-Match (Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $Root 'package-lock.json')) '"name": "jimmy-blog"' 'Package lock name'
+
+$removedPaths = @(
+    '_doc',
+    'img/avatar-hux-home.jpg',
+    'img/avatar-hux-ny.jpg',
+    'img/avatar-hux.jpg',
+    'img/bg-me-2022.jpg',
+    'img/blog-desktop.jpg',
+    'img/blog-keynote.jpg',
+    'img/blog-md-navbar.gif',
+    'img/blog-sidebar.jpg',
+    'img/icon_wechat.png',
+    '_includes/ads.html',
+    'ads.txt'
+)
+foreach ($relativePath in $removedPaths) {
+    if (Test-Path -LiteralPath (Join-Path $Root $relativePath)) {
+        throw "Upstream-only path still exists: $relativePath"
+    }
+}
+
 Write-Host 'Personalization verification passed.'

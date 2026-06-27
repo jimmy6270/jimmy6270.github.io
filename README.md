@@ -1,63 +1,27 @@
-[Hux Blog](https://huangxuan.me)
-================================
+# Jimmy Blog
 
-> I never expected this to become popular.
+Jimmy 的个人技术博客，主要记录 AI 编程、开发工具与实际应用。
 
-![](http://huangxuan.me/img/blog-desktop.jpg)
+- 网站：<https://blog.jebhenry.dpdns.org/>
+- GitHub：<https://github.com/jimmy6270>
 
+## 本地运行
 
-[User Manual 👉](_doc/Manual.md)
---------------------------------------------------
-
-### Getting Started
-
-1. You will need [Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/) to use [Jekyll](https://jekyllrb.com/). Following [Using Jekyll with Bundler](https://jekyllrb.com/tutorials/using-jekyll-with-bundler/) to fullfill the enviromental requirement.
-
-2. Installed dependencies in the `Gemfile`:
+需要 Ruby、Bundler 和 Node.js。
 
 ```sh
-$ bundle install 
+bundle install
+bundle exec jekyll serve
 ```
 
-3. Serve the website (`localhost:4000` by default):
+默认访问地址为 <http://localhost:4000>。
 
-```sh
-$ bundle exec jekyll serve  # alternatively, npm start
-```
+## 发布
 
-### Development (Build From Source)
+推送到 `master` 后，GitHub Actions 会构建并部署 GitHub Pages。自定义域名记录在根目录 `CNAME`。
 
-To modify the theme, you will need [Grunt](https://gruntjs.com/). There are numbers of tasks you can find in the `Gruntfile.js`, includes minifing JavaScript, compiling `.less` to `.css`, adding banners to keep the Apache 2.0 license intact, watching for changes, etc. 
+## 主题与许可
 
-Yes, they were inherited and are extremely old-fashioned. There is no modularization and transpilation, etc.
+本站主题基于 [Hux Blog](https://github.com/Huxpro/huxpro.github.io)，并派生自 Clean Blog Jekyll Theme。
 
-Critical Jekyll-related code are located in `_include/` and `_layouts/`. Most of them are [Liquid](https://github.com/Shopify/liquid/wiki) templates.
-
-This theme uses the default code syntax highlighter of jekyll, [Rouge](http://rouge.jneen.net/), which is compatible with Pygments theme so just pick any pygments theme css (e.g. from [here](http://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html) and replace the content of `highlight.less`.
-
-
-### Interesting to know more? Checkout the [full user manual](_doc/Manual.md)!
-
-
-Other Resources
----------------
-
-Ports
-- [**Hexo**](https://github.com/Kaijun/hexo-theme-huxblog) by @kaijun
-- [**React-SSR**](https://github.com/LucasIcarus/huxpro.github.io/tree/ssr) by @LucasIcarus
-
-[Starter/Boilerplate](https://github.com/huxpro/huxblog-boilerplate)
-- Out of date. Helps wanted for updating it on par with the main repo
-
-Translation
-- [🇨🇳  中文文档（有点过时）](https://github.com/Huxpro/huxpro.github.io/blob/master/_doc/README.zh.md)
-
-
-License
--------
-
-Apache License 2.0.
-Copyright (c) 2015-present Huxpro
-
-Hux Blog is derived from [Clean Blog Jekyll Theme (MIT License)](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll/)
-Copyright (c) 2013-2016 Blackrock Digital LLC.
+主题代码继续遵循仓库内 [Apache License 2.0](LICENSE) 及相关第三方许可。
