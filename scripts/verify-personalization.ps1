@@ -111,4 +111,16 @@ foreach ($relativePath in $removedPaths) {
     }
 }
 
+if (Test-Path -LiteralPath $SiteDir) {
+    $siteFiles = @(Get-ChildItem -LiteralPath $SiteDir -Recurse -File -Include *.html,*.xml,*.json)
+    $siteText = ($siteFiles | ForEach-Object {
+        Get-Content -Raw -Encoding UTF8 -LiteralPath $_.FullName
+    }) -join "`n"
+
+    Assert-Match $siteText 'Jimmy Blog' 'Generated site name'
+    Assert-Match $siteText 'github\.com/jimmy6270' 'Generated GitHub link'
+    Assert-Match $siteText '\u63A2\u7D22 AI \u7F16\u7A0B\u4E0E\u5E94\u7528' 'Generated site focus'
+    Assert-NoMatch $siteText '\u9EC4\u7384|\u5ED6\u5251\u660E|huangxuan\.me|huxpro@gmail\.com|UA-49627206-1|user=huxpro|avatar-hux|icon_wechat|ca-pub-6487568398225121' 'Generated site identity residue'
+}
+
 Write-Host 'Personalization verification passed.'
