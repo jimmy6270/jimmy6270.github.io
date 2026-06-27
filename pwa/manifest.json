@@ -1,7 +1,7 @@
 {
-  "name": "Hux Blog",
-  "short_name": "Hux Blog",
-  "description": "About an engineer & designer who loves web.",
+  "name": "Jimmy Blog",
+  "short_name": "Jimmy Blog",
+  "description": "探索 AI 编程与应用，分享实践、工具与思考。",
   "icons": [{
     "src": "icons/128.png",
     "sizes": "128x128",
