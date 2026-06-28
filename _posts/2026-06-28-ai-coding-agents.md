@@ -4,12 +4,13 @@ title: "2026年AI编程神器四选一：Claude Code / Codex / Antigravity / Cur
 date: 2026-06-28 17:30:00 +0800
 author: "Jimmy"
 catalog: true
-header-img: "img/posts/2026-06-28-ai-coding-agents/cover.png"
 tags:
   - AI编程
   - Agent
   - 工具评测
 ---
+
+![封面图](/img/posts/2026-06-28-ai-coding-agents/cover.png)
 
 ## 2026年6月，AI编程工具进入"四国时代"
 
