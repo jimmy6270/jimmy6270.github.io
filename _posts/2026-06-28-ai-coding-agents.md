@@ -18,7 +18,7 @@ tags:
 
 Claude Code 技术无敌，SWE-bench 高达 95%，但模型居然被美国政府封杀了；
 
-Codex 功能最全，$20/月包月不限量，手机远程写代码像科幻片；
+Codex 功能最全，$20/月起步，但有5小时+周用量限制，手机远程写代码像科幻片；
 
 Google Antigravity 2.0 直接免费，93个子 agent 并行跑，但用户骂声一片；
 
@@ -33,7 +33,7 @@ Cursor 悄悄做到 $20 亿美元年收入，60% 来自企业——这可能是 
 | **底层模型** | Fable 5 / Opus 4.8 | GPT-5.5 / GPT-5.4 | Gemini 3.5 / Claude Sonnet / GPT-OSS | 多模型（Opus 4.8 / GPT-5.4 / Gemini 3 Pro） |
 | **SWE-bench Verified** | 🥇 95.0% | 82.6% | 78.8% | 依赖底层模型 |
 | **SWE-bench Pro** | 🥇 80.3% | 58.6% | 54.2% | 依赖底层模型 |
-| **入门价** | API 计费 | 🥇 $20/月 | 🥇 免费 | $20/月 |
+| **入门价** | API 计费 / $20/月 Pro 套餐 | $20/月（有5h+周限额） | 🥇 免费 | $20/月 |
 | **年化收入** | ~$63亿（社区估算） | 随 ChatGPT 打包 | 免费公测 | 🥇 $20亿 ARR |
 | **开源仓库** | - | 🥇 44.7K⭐（GitHub） | - | - |
 | **接口形态** | 纯 CLI | CLI + IDE + 桌面App + 手机 | CLI + 桌面App + SDK | IDE 一体化（VS Code） |
@@ -63,7 +63,9 @@ SWE-bench Verified 从 Opus 4.8 的 88.6% 跳到 **95%**，SWE-bench Pro 从 69.
 
 **适合谁：** 追求极致代码质量、复杂多文件重构、长逻辑链推理的开发者。但要做好"不知道明天还能不能用"的心理准备。
 
-**不适合谁：** 预算敏感的个人开发者（API 计费不可预测）、需要稳定可用性的团队。
+**不适合谁：** 预算敏感的个人开发者、需要稳定可用性的团队。
+
+> ℹ️ 补充：Claude Code 除了 API 计费，也有订阅套餐——Claude Pro $20/月、Claude Max $100/月（5倍配额）、Max 20x $200/月。团队版 Team Premium $100/人/月。
 
 ## 2. Codex：不是最强模型，但是最强生态
 
@@ -73,7 +75,7 @@ OpenAI 在 6月25日发布的内部数据显示：Codex 占 OpenAI 内部 **99.8
 
 Codex 的杀手锏不是模型本身（GPT-5.5 的 SWE-bench 82.6%，被 Fable 5 碾压），而是：
 
-- **$20/月固定价**：包在 ChatGPT Plus 里，不需要盯着 API 计费表
+- **$20/月 Plus 套餐**：包在 ChatGPT Plus 里，但有 **5小时消息上限 + 每周用量限制**。重度用户实测 20 分钟到 2 小时就能打满，用完只能等重置或加钱（$200/月 Pro 套餐 20 倍额度）
 - **四端合一**：CLI + IDE 插件 + 桌面 App + 手机远程——通勤时可以用手机给家里的电脑下达编程任务
 - **Computer Use**：Codex 能直接操作你的浏览器和应用，不只是写代码，而是帮你完成整个工作流
 - **Skills Marketplace + MCP + 自动化**：第三方技能插件、定时任务、项目级记忆
@@ -143,8 +145,8 @@ Cursor 的护城河不是模型（它用的是别人的模型），而是：
 
 ### 技术极致型（不差钱，要最好）
 
-- 首选：**Claude Code**（Opus 4.8 编程最强；Fable 5 如果恢复可用）
-- 备选：**Codex Pro**（$100/月，GPT-5.5 + Rust CLI + Skills Marketplace）
+- 首选：**Claude Code**（$20/月 Pro 能用，要极致就 $100/月 Max 套餐）
+- 备选：**Codex Pro**（$200/月，GPT-5.5，20倍额度 + Skills Marketplace）
 
 ### 企业团队型
 
