@@ -9,7 +9,7 @@ tags:
 
 ## 正文
 
-![Hugging Face 分析 1781 条 Agent 运行记录，发现框架选择比模型重要 7 倍](/img/posts/2026-06-29-mixed-topics/cover.png)
+![Hugging Face 分析 1781 条 Agent 运行记录，发现框架选择比模型重要 7 倍](/img/posts/2026-06-29-mixed-topics/cover.png?v=306a06b9)
 
 ![任务输入经Harness格式化为prompt注入LLM模型，模型输出被Harness解析后循环执行工具调用，最终判定成功或失败。Harness对成功率影响是模型的7倍。](/img/posts/2026-06-29-mixed-topics/diagram.png)
 
