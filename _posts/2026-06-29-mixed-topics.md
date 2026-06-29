@@ -7,13 +7,13 @@ catalog: true
 tags:
 ---
 
-![Hugging Face 分析 1781 条 Agent 运行记录，发现框架选择比模型重要 7 倍](/img/posts/2026-06-29-mixed-topics/cover.png?v=2)
-
 如果你想部署一个有实际产出的 AI Agent，你现在最该纠结的，可能不是选哪个模型。而是选哪个框架。
 
 这不是随口说的——Hugging Face 联合 Braintrust 刚刚发布了一份大规模评估报告，分析了 1,781 条来自真实 Agent 运行过程的完整追踪记录。他们用回归分析控制了模型和任务变量后，发现了一个相当反直觉的结论：
 
 **Agent 的工程框架（harness）对成功率的影响，是模型选择的约 7 倍。** 而换框架的成本，几乎为零。
+
+![Hugging Face 分析 1781 条 Agent 运行记录，发现框架选择比模型重要 7 倍](/img/posts/2026-06-29-mixed-topics/cover.png?v=2)
 
 先看两个极端数字：
 
