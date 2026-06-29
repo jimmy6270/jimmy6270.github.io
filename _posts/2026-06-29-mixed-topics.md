@@ -15,13 +15,15 @@ tags:
 
 ![Hugging Face 分析 1781 条 Agent 运行记录：框架选择可能比模型更关键](/img/posts/2026-06-29-mixed-topics/cover.png?v=2)
 
-先看一个足够直观的数字：
+先看一个更扎眼的同题对照：
 
 - Kimi K2.5 在 AppWorld 任务上，用 `smolagents_code` 框架成功率 **92%**。换成 `tool_calling`，只有 **12%**。
 
-约 80 个百分点的波动。不是换模型，是换框架。
+这不是“92 分”和“80 分”的差距，而是“基本能用”和“几乎不可用”的差距。
 
-原文还提到 Claude 在 SWE-bench 上存在 `claude_code` 100% vs `tool_calling` 14% 的对比。不过从它后面的结果表看，Claude 的 14% 更像是 AppWorld 上 `tool_calling` 的结果，而不是 SWE-bench 的同基准对照。因此更稳妥的读法是：**harness 确实能带来很大的成功率差异，但具体数字要按同一个 benchmark、同一个模型组合来看。**
+模型没变，任务没变，价格也没明显变化。真正变的，是 Agent 怎么调用工具、怎么执行循环、怎么处理错误、怎么判断自己已经完成任务。
+
+这才是这份报告最刺耳的地方：**很多团队以为自己在做模型选型，其实更应该先做 harness 选型。** 好模型装进一个差的执行框架里，最后跑出来的可能还是一个差 Agent。
 
 ### Harness 到底是什么？跟 Agent 是什么关系？
 
