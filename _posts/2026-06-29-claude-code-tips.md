@@ -9,13 +9,13 @@ tags:
 
 ## 正文
 
-![Claude Code 官方 Best Practices：90% 用户没启用的 7 个进阶机制](/img/posts/2026-06-29-claude-code-tips/cover.png)
-
 很多人把 Claude Code 当成一个聊天框：输入需求，拿到代码，复制粘贴。这不叫用 Claude Code，这叫用了一个会写代码的搜索引擎。
 
 Claude Code 真正的能力在于它是一套 agentic coding 系统——能读你的代码库、编辑文件、运行命令、管理会话、自动执行工作流。但前提是，你得开启那些你不知道存在的机制。
 
 Anthropic 在 2026 年 Q1-Q2 密集更新了官方文档和工程博客，系统梳理了 Claude Code 的 Best Practices。以下是 7 个最值得启用的进阶机制，全部基于官方一手文档。
+
+![Claude Code 7 个进阶机制：从项目配置到并行执行到成本控制的完整工作流](/img/posts/2026-06-29-claude-code-tips/cover.png)
 
 ### 1. CLAUDE.md：项目记忆文件，但克制才是关键
 
