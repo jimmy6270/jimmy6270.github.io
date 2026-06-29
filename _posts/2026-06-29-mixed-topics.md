@@ -7,7 +7,7 @@ catalog: true
 tags:
 ---
 
-![Hugging Face 分析 1781 条 Agent 运行记录，发现框架选择比模型重要 7 倍](/img/posts/2026-06-29-mixed-topics/cover.png?v=2)}
+![Hugging Face 分析 1781 条 Agent 运行记录，发现框架选择比模型重要 7 倍](/img/posts/2026-06-29-mixed-topics/cover.png?v=2)
 
 如果你想部署一个有实际产出的 AI Agent，你现在最该纠结的，可能不是选哪个模型。而是选哪个框架。
 
