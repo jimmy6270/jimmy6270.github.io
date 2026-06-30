@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Comet 不是又一个 AI 编码工具，它想解决的是 Agent 长任务失控"
+title: "比 OpenSpec 更重，比 Superpowers 更深：Comet 想补上 Agent 工具链最后一块"
 date: 2026-06-30 22:44:45 +0800
 author: "Jimmy"
 catalog: true
