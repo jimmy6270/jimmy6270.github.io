@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Comet 不是又一个 AI 编码工具，它想解决的是 Agent 长任务失控"
-date: 2026-06-30 22:23:02 +0800
+date: 2026-06-30 22:44:45 +0800
 author: "Jimmy"
 catalog: true
 tags:
@@ -11,9 +11,9 @@ tags:
 
 ![Comet 不是又一个 AI 编码工具，它想解决的是 Agent 长任务失控](/img/posts/2026-06-30-comet-tool-research/cover.png)
 
-![Comet 工作流从想法和 Spec 进入 Design、Build、Verify、Archive，状态和 Guard 节点约束 Build 与 Verify。](/img/posts/2026-06-30-comet-tool-research/diagram.png)
+![Comet 工作流左侧是想法和 Spec、设计任务、构建测试，右侧是状态 Guard、验证证据、归档变更，边线标注创建、拆解、实现、归档、约束和留痕。](/img/posts/2026-06-30-comet-tool-research/diagram.png)
 
-*图：Comet 把 AI 编码任务拆成阶段，并用状态与 guard 约束推进。*
+*图：Comet 用阶段状态和 guard 把长任务拆成可恢复、可验证的流程。*
 
 如果你经常让 AI agent 改一个跨文件、跨步骤的功能，最烦的往往不是“它会不会写代码”，而是它做到一半忘了需求、跳过测试、文档不同步，或者换个会话就接不上。Comet 这个项目想解决的正是这类长任务失控问题。
 
@@ -53,6 +53,54 @@ comet init
 - `comet uninstall`：移除 Comet 管理的技能、规则和钩子。
 
 Agent 侧主要用 `/comet` 作为主入口。它会根据当前 Spec 状态和 Comet 状态判断下一步。也可以分阶段使用 `/comet-open`、`/comet-design`、`/comet-build`、`/comet-verify`、`/comet-archive`。如果任务较小，README 还提供 `/comet-hotfix` 和 `/comet-tweak` 作为快捷路径。
+
+给一个更具体的试用例子。
+
+假设你有一个 Node.js demo 项目，里面已经有评论列表接口，现在想让 AI agent 增加“评论点赞”功能。这个任务不算大，但会涉及需求说明、接口变更、数据结构、测试和文档，正好适合观察 Comet 的完整流程。
+
+你可以这样开始：
+
+```bash
+mkdir comet-demo && cd comet-demo
+git init
+npm init -y
+npm install -g @rpamis/comet
+comet init
+comet status
+```
+
+然后在 AI 编码环境里发起需求：
+
+```text
+/comet-open
+为评论系统增加点赞功能：每条评论可以被点赞一次，需要保存点赞数，补充接口测试，并更新 README 的 API 示例。
+```
+
+进入 Design 阶段后，不要急着让 agent 写代码。先让它明确几件事：点赞接口路径是什么，重复点赞怎么处理，点赞数存在哪里，已有测试框架怎么接入，README 要更新哪段。这个阶段的价值，是把“我要点赞功能”变成可执行的设计和任务清单。
+
+接着进入 Build：
+
+```text
+/comet-build
+按设计实现点赞接口，补充测试，保持现有接口兼容。
+```
+
+这时你重点看三类输出：代码补丁、测试结果、任务状态。普通聊天式开发经常只看补丁，但 Comet 的重点是把“做到了哪一步”和“验证证据在哪里”也留下来。
+
+实现后再走 Verify：
+
+```text
+/comet-verify
+检查点赞功能、重复点赞处理、测试结果和 README 示例是否完整。
+```
+
+最后归档：
+
+```text
+/comet-archive
+```
+
+这个例子的意义不在于点赞功能多复杂，而在于你可以观察 Comet 是否真的帮你回答这些问题：需求有没有被写成 change？设计有没有明确？任务有没有拆开？测试证据有没有记录？换一个会话后，`comet status` 能不能告诉你下一步？如果答案是肯定的，它才对你的真实项目有价值。
 
 Comet 比较关键的机制，是它不只靠一句 prompt 约束 agent，而是把状态写进项目。研究卡里最值得注意的是 `.comet.yaml`：它用于记录 change、phase、任务进度、质量门禁、证据和归档状态。Auto Transition 文档还特别说明，`auto_transition` 只控制阶段推进后是否自动调用下一个 skill，不控制阶段推进本身；阶段推进由 guard 脚本 apply。这一点很重要，因为它说明 Comet 不是简单“自动一路跑到底”，而是把自动化和阶段门禁拆开。
 
